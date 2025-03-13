@@ -16,7 +16,7 @@ VIEW_FOV = 90
 model = cv2.dnn.readNet("weights/yolov3.weights", "cfg/yolov3.cfg")
 classes = [line.strip() for line in open("cfg/coco.names", "r").readlines()]
 layers_names = model.getLayerNames()
-output_layers = [layers_names[i[0]-1] for i in model.getUnconnectedOutLayers()]
+output_layers = [layers_names[i-1] for i in model.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 def draw_labels(boxes, confs, colors, class_ids, classes, img): 
